@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Eureka-Server
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    healthCheckUrlPath: /health
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    region: default
+    eurekaServerPort: 8761
+    useDnsForFetchingServiceUrls: true
+    eurekaServerDNSName: eureka.sf-express.com
+    eurekaServerURLContext: eureka
+    registerWithEureka: true
+    fetchRegistry: true
