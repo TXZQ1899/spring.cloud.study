@@ -14,7 +14,8 @@ eureka:
     region: default
     eurekaServerPort: 8761
     useDnsForFetchingServiceUrls: true
-    eurekaServerDNSName: eureka.sf-express.com
+    eurekaServiceUrlPollIntervalSeconds: 10
+    eurekaServerDNSName: eureka.txzq.com
     eurekaServerURLContext: eureka
     registerWithEureka: true
     fetchRegistry: true
