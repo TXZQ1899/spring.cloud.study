@@ -1,9 +1,9 @@
 spring:
   application:
-    name: Eureka-Server
+    name: HelloService
 
 server:
-  port: 8761
+  port: 1080
 
 eureka:
   instance:
@@ -16,5 +16,4 @@ eureka:
     useDnsForFetchingServiceUrls: true
     eurekaServerDNSName: eureka.intsit.sfdc.com.cn
     eurekaServerURLContext: eureka
-    registerWithEureka: true
-    fetchRegistry: true
+    

@@ -1,0 +1,8 @@
+com\netflix\discovery\endpoint\EndpointUtils.class
+com\netflix\discovery\shared\resolver\aws\ConfigClusterResolver.class
+com\netflix\discovery\endpoint\EndpointUtils$ServiceUrlRandomizer.class
+com\netflix\discovery\endpoint\EndpointUtils$DiscoveryUrlType.class
+com\netflix\discovery\shared\resolver\aws\DnsTxtRecordClusterResolver.class
+com\netflix\discovery\endpoint\DnsResolver.class
+com\netflix\discovery\endpoint\EndpointUtils$InstanceInfoBasedUrlRandomizer.class
+com\netflix\discovery\shared\resolver\ResolverUtils.class
