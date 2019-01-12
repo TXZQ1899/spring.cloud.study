@@ -110,9 +110,7 @@ public class DnsTxtRecordClusterResolver implements ClusterResolver<AwsEndpoint>
     @Override
     public List<AwsEndpoint> getClusterEndpoints() {
         List<AwsEndpoint> eurekaEndpoints = resolve(region, rootClusterDNS, extractZoneFromDNS, port, isSecure, relativeUri);
-        if (logger.isDebugEnabled()) {
-            logger.debug("Resolved {} to {}", rootClusterDNS, eurekaEndpoints);
-        }
+        logger.debug("Resolved {} to {}", rootClusterDNS, eurekaEndpoints);
 
         return eurekaEndpoints;
     }
@@ -141,12 +139,12 @@ public class DnsTxtRecordClusterResolver implements ClusterResolver<AwsEndpoint>
         Set<String> result;
         try {
             result = DnsResolver.getCNamesFromTxtRecord(rootClusterDNS);
-            if (!rootClusterDNS.startsWith("txt-")) {
-                result = DnsResolver.getCNamesFromTxtRecord("txt-" + rootClusterDNS);
+            if (!rootClusterDNS.startsWith("txt.")) {
+                result = DnsResolver.getCNamesFromTxtRecord("txt." + rootClusterDNS);
             }
         } catch (NamingException e) {
-            if (!rootClusterDNS.startsWith("txt-")) {
-                result = DnsResolver.getCNamesFromTxtRecord("txt-" + rootClusterDNS);
+            if (!rootClusterDNS.startsWith("txt.")) {
+                result = DnsResolver.getCNamesFromTxtRecord("txt." + rootClusterDNS);
             } else {
                 throw e;
             }

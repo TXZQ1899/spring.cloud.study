@@ -43,7 +43,7 @@ public final class ResolverUtils {
 
     private static final String LOCAL_IPV4_ADDRESS = SystemUtil.getServerIPv4();
 
-    private static final Pattern ZONE_RE = Pattern.compile("(txt\\-)?([^-]+).*");
+    private static final Pattern ZONE_RE = Pattern.compile("(txt\\-)?([^-`]+).*");
 
     private ResolverUtils() {
     }

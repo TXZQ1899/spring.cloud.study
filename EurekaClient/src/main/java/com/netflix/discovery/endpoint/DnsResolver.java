@@ -81,7 +81,7 @@ public final class DnsResolver {
             } while (targetHost == null);
             return targetHost;
         } catch (NamingException e) {
-            logger.warn("Cannot resolve eureka server address " + currentHost + "; returning original value " + originalHost, e);
+            logger.warn("Cannot resolve eureka server address {}; returning original value {}", currentHost, originalHost, e);
             return originalHost;
         }
     }
@@ -109,7 +109,7 @@ public final class DnsResolver {
                 return result;
             }
         } catch (Exception e) {
-            logger.warn("Cannot load A-record for eureka server address " + rootDomainName, e);
+            logger.warn("Cannot load A-record for eureka server address {}", rootDomainName, e);
             return null;
         }
         return null;
@@ -134,13 +134,21 @@ public final class DnsResolver {
         String txtRecord = null;
         if (attr != null) {
             txtRecord = attr.get().toString();
+
+            /**
+             * compatible splited txt record of "host1 host2 host3" but not "host1" "host2" "host3".
+             * some dns service provider support txt value only format "host1 host2 host3"
+             */
+            if (txtRecord.startsWith("\"") && txtRecord.endsWith("\"")) {
+                txtRecord = txtRecord.substring(1, txtRecord.length() - 1);
+            }
         }
 
         Set<String> cnamesSet = new TreeSet<String>();
         if (txtRecord == null || txtRecord.trim().isEmpty()) {
             return cnamesSet;
         }
-        String[] cnames = txtRecord.replace("\"", "").split(" ");
+        String[] cnames = txtRecord.split(" ");
         Collections.addAll(cnamesSet, cnames);
         return cnamesSet;
     }
